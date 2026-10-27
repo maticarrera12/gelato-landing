@@ -1,4 +1,3 @@
-const HIDDEN = "-translate-y-24";
 let timer: ReturnType<typeof setTimeout> | undefined;
 
 export function showToast(text: string) {
@@ -7,7 +6,7 @@ export function showToast(text: string) {
   if (!toast || !msg) return;
 
   msg.textContent = text;
-  toast.classList.remove(HIDDEN);
+  toast.dataset.show = "true";
   clearTimeout(timer);
-  timer = setTimeout(() => toast.classList.add(HIDDEN), 2400);
+  timer = setTimeout(() => (toast.dataset.show = "false"), 2400);
 }

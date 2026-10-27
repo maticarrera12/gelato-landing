@@ -7,16 +7,17 @@ import ScoopArt from "./ScoopArt.astro";
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
       <div>
-        <span class="text-candy-blue text-xs uppercase font-extrabold tracking-widest">// CARTA DE VERANO</span>
-        <h2 class="font-display font-bold text-4xl sm:text-5xl text-candy-ink mt-1">Nuestros Sabores Insignia</h2>
+        <span data-reveal="fade" class="inline-block text-candy-blue text-xs uppercase font-extrabold tracking-widest">// CARTA DE VERANO</span>
+        <h2 data-reveal="words" data-reveal-delay="100" class="font-display font-bold text-4xl sm:text-5xl text-candy-ink mt-1">Nuestros Sabores Insignia</h2>
       </div>
 
-      <div class="flex flex-wrap gap-2">
+      <div data-reveal-group data-stagger="55" data-base="350" class="flex flex-wrap gap-2">
         {
           categories.map((c, i) => (
             <button
+              data-reveal="up"
               data-filter={c.id}
-              class={`px-4 py-2 rounded-xl font-bold text-xs uppercase border-2 border-candy-ink text-candy-ink transition-all ${
+              class={`px-4 py-2 rounded-xl font-bold text-xs uppercase border-2 border-candy-ink text-candy-ink pressable ${
                 i === 0 ? "bg-candy-mango shadow-pop" : `bg-white ${c.hover}`
               }`}
             >
@@ -27,18 +28,19 @@ import ScoopArt from "./ScoopArt.astro";
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div data-reveal-group data-stagger="100" data-base="150" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {
-        catalog.map((f) => (
+        catalog.map((f, i) => (
           <div
+            data-reveal="up"
             data-cat={f.cat}
-            class="flavor-card bg-white rounded-3xl border-2 border-candy-ink p-5 shadow-pop hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between"
+            class="flavor-card bg-white rounded-3xl border-2 border-candy-ink p-5 shadow-pop hover:-translate-y-2 transition-transform duration-200 flex flex-col justify-between"
           >
             <div>
-              <div class={`h-44 rounded-2xl border-2 border-candy-ink p-4 flex flex-col justify-between relative overflow-hidden mb-4 ${f.panel}`}>
+              <div data-reveal="clip" data-reveal-delay={300 + i * 100} class={`h-44 rounded-2xl border-2 border-candy-ink p-4 flex flex-col justify-between relative overflow-hidden mb-4 ${f.panel}`}>
                 <span class={`self-start text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase ${f.hexTag}`}>{f.hex}</span>
                 <div class="flex justify-center animate-float" style={`animation-delay: ${f.delay};`}>
-                  <ScoopArt color={f.hex} class="h-28" />
+                  <ScoopArt color={f.hex} class="h-28" data-reveal="pop" data-reveal-delay={550 + i * 100} />
                 </div>
                 <span class={`text-xs font-bold px-2.5 py-0.5 rounded-md self-end ${f.badgeClass}`}>{f.badge}</span>
               </div>
@@ -49,7 +51,7 @@ import ScoopArt from "./ScoopArt.astro";
               <span class="text-xs font-bold text-candy-blue">Dulzura: {f.sweetness}/10</span>
               <button
                 data-quick-add={f.name}
-                class="w-8 h-8 rounded-lg bg-candy-mint border border-candy-ink flex items-center justify-center font-bold text-sm hover:bg-candy-blue hover:text-white transition-colors"
+                class="w-8 h-8 rounded-lg bg-candy-mint border border-candy-ink flex items-center justify-center font-bold text-sm hover:bg-candy-blue hover:text-white pressable"
               >
                 +
               </button>

@@ -39,7 +39,7 @@ function render() {
   $("scoopCounterBadge").textContent = `${scoops.length}/${MAX_SCOOPS}`;
 
   const empty = scoops.length === 0;
-  $("emptyNotice").style.display = empty ? "flex" : "none";
+  $("emptyNotice").classList.toggle("opacity-0", !empty);
   $("flavorListText").textContent = empty ? "Cucurucho Waffle Vacío" : scoops.map((s) => s.name).join(" + ");
 
   syncView();

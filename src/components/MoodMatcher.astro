@@ -3,21 +3,22 @@ import { moods } from "../data/flavors";
 ---
 
 <section id="mood" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-  <div class="bg-candy-pink rounded-3xl border-2 border-candy-ink p-8 sm:p-12 shadow-pop-lg text-center">
-    <span class="text-xs font-mono font-bold uppercase bg-white border border-candy-ink px-3 py-1 rounded-full">Generador de Antojos</span>
-    <h2 class="font-display font-bold text-3xl sm:text-5xl text-candy-ink mt-3">¿Cuál es tu mood de hoy?</h2>
-    <p class="text-candy-ink/80 text-sm max-w-md mx-auto mt-2">
+  <div data-reveal="scale" class="bg-candy-pink rounded-3xl border-2 border-candy-ink p-8 sm:p-12 shadow-pop-lg text-center">
+    <span data-reveal="pop" data-reveal-delay="250" class="inline-block text-xs font-mono font-bold uppercase bg-white border border-candy-ink px-3 py-1 rounded-full">Generador de Antojos</span>
+    <h2 data-reveal="words" data-reveal-delay="350" class="font-display font-bold text-3xl sm:text-5xl text-candy-ink mt-3">¿Cuál es tu mood de hoy?</h2>
+    <p data-reveal="up" data-reveal-delay="650" class="text-candy-ink/80 text-sm max-w-md mx-auto mt-2">
       Tocá tu estado anímico y nuestro laboratorio te recomienda la dupla perfecta para alegrarte el día.
     </p>
 
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8 max-w-2xl mx-auto">
+    <div data-reveal-group data-stagger="80" data-base="750" class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8 max-w-2xl mx-auto">
       {
         moods.map((m) => (
           <button
+            data-reveal="pop"
             data-mood={m.id}
             data-mood-title={m.title}
             data-mood-desc={m.desc}
-            class={`p-4 rounded-2xl bg-white border-2 border-candy-ink shadow-pop transition-all font-bold text-xs uppercase flex flex-col items-center gap-2 ${m.hover}`}
+            class={`p-4 rounded-2xl bg-white border-2 border-candy-ink shadow-pop pressable font-bold text-xs uppercase flex flex-col items-center gap-2 ${m.hover}`}
           >
             <i class={`ph-bold ${m.icon} text-3xl`}></i>
             <span>{m.label}</span>
@@ -26,7 +27,7 @@ import { moods } from "../data/flavors";
       }
     </div>
 
-    <div class="bg-white border-2 border-candy-ink rounded-2xl p-6 max-w-lg mx-auto shadow-pop">
+    <div id="moodResult" data-reveal="up" data-reveal-delay="1100" class="bg-white border-2 border-candy-ink rounded-2xl p-6 max-w-lg mx-auto shadow-pop">
       <i class="ph-bold ph-sparkle text-2xl mb-1 block"></i>
       <h4 id="moodTitle" class="font-display font-bold text-lg text-candy-ink">Seleccioná un mood arriba</h4>
       <p id="moodDesc" class="text-xs text-candy-ink/70 mt-1">Te diremos la combinación de helado que necesitas ahora mismo.</p>

@@ -2,7 +2,7 @@
 import { palette } from "../data/palette";
 ---
 
-<aside id="paletteDrawer" class="hidden fixed bottom-6 right-6 z-50 bg-candy-cream p-5 rounded-3xl border-2 border-candy-ink shadow-pop-lg max-w-xs w-full">
+<aside id="paletteDrawer" data-open="false" aria-hidden="true" inert class="fixed bottom-6 right-6 z-50 origin-bottom-right invisible opacity-0 scale-95 translate-y-2 transition-[opacity,translate,scale,visibility] duration-150 data-[open=true]:visible data-[open=true]:opacity-100 data-[open=true]:scale-100 data-[open=true]:translate-y-0 data-[open=true]:duration-200 bg-candy-cream p-5 rounded-3xl border-2 border-candy-ink shadow-pop-lg max-w-xs w-full">
   <div class="flex justify-between items-center mb-3">
     <div class="flex items-center gap-1.5">
       <i class="ph-bold ph-palette text-base"></i>

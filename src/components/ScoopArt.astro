@@ -2,13 +2,14 @@
 interface Props {
   color: string;
   class?: string;
+  [attr: `data-${string}`]: string | number | undefined;
 }
 
-const { color, class: className } = Astro.props;
+const { color, class: className, ...rest } = Astro.props;
 ---
 
 <!-- Flat illustration of the 3D scoop: same face, same ink outline -->
-<svg viewBox="0 0 100 130" class:list={["drop-shadow-sm", className]} aria-hidden="true">
+<svg viewBox="0 0 100 130" class:list={["drop-shadow-sm", className]} aria-hidden="true" {...rest}>
   <g class="stroke-candy-ink" stroke-width="3" stroke-linejoin="round">
     <polygon points="30,74 70,74 50,126" class="fill-candy-mango"></polygon>
     <g stroke-width="1.8" stroke-linecap="round">

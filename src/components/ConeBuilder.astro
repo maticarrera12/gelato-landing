@@ -4,16 +4,16 @@ import { scoopFlavors, toppings } from "../data/flavors";
 
 <section id="creador" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
   <div class="text-center max-w-2xl mx-auto mb-12">
-    <span class="px-4 py-1.5 rounded-full bg-candy-mango border border-candy-ink text-xs font-bold uppercase tracking-wider text-candy-ink">
+    <span data-reveal="pop" class="inline-block px-4 py-1.5 rounded-full bg-candy-mango border border-candy-ink text-xs font-bold uppercase tracking-wider text-candy-ink">
       ¡Experiencia Interactiva!
     </span>
-    <h2 class="font-display font-bold text-4xl sm:text-5xl text-candy-ink mt-3">Armá tu Cono en el Lab</h2>
-    <p class="text-candy-ink/75 text-base mt-2">
+    <h2 data-reveal="words" data-reveal-delay="120" class="font-display font-bold text-4xl sm:text-5xl text-candy-ink mt-3">Armá tu Cono en el Lab</h2>
+    <p data-reveal="up" data-reveal-delay="350" class="text-candy-ink/75 text-base mt-2">
       Hacé clic en los sabores para apilar hasta 3 bochas de helado sobre el cucurucho artesanal. ¡Combinalos a tu gusto!
     </p>
   </div>
 
-  <div class="bg-white rounded-3xl border-2 border-candy-ink p-6 sm:p-10 shadow-pop-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+  <div data-reveal="scale" data-reveal-delay="200" class="bg-white rounded-3xl border-2 border-candy-ink p-6 sm:p-10 shadow-pop-lg grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
     <div class="lg:col-span-7 space-y-6">
       <div>
         <h3 class="font-display font-bold text-xl text-candy-ink mb-3 flex items-center gap-2">
@@ -21,14 +21,15 @@ import { scoopFlavors, toppings } from "../data/flavors";
           <span id="scoopCounterBadge" class="text-xs bg-candy-cream border border-candy-ink px-2 py-0.5 rounded-full font-mono font-bold">0/3</span>
         </h3>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div data-reveal-group data-stagger="60" data-base="500" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {
             scoopFlavors.map((f) => (
               <button
+                data-reveal="pop"
                 data-scoop-name={f.name}
                 data-scoop-color={f.color}
                 data-scoop-text={f.textClass}
-                class={`p-3 rounded-2xl border-2 border-candy-ink transition-all text-left flex items-center gap-2.5 shadow-pop hover:-translate-y-0.5 ${f.btn}`}
+                class={`p-3 rounded-2xl border-2 border-candy-ink pressable text-left flex items-center gap-2.5 shadow-pop hover:-translate-y-0.5 ${f.btn}`}
               >
                 <span class={`w-6 h-6 rounded-full border border-candy-ink shrink-0 ${f.dot}`} />
                 <div class="truncate">
@@ -43,12 +44,13 @@ import { scoopFlavors, toppings } from "../data/flavors";
 
       <div>
         <h3 class="font-display font-bold text-xl text-candy-ink mb-3">2. Sumale Toppings</h3>
-        <div class="flex flex-wrap gap-2">
+        <div data-reveal-group data-stagger="80" data-base="900" class="flex flex-wrap gap-2">
           {
             toppings.map((t) => (
               <button
+                data-reveal="pop"
                 data-topping={t.id}
-                class="px-4 py-2 rounded-xl border-2 border-candy-ink bg-white font-bold text-xs hover:bg-candy-mint transition-colors inline-flex items-center gap-1.5"
+                class="px-4 py-2 rounded-xl border-2 border-candy-ink bg-white font-bold text-xs hover:bg-candy-mint pressable inline-flex items-center gap-1.5"
               >
                 <i class={`ph-bold ${t.icon} text-sm`} />
                 {t.label}
@@ -62,7 +64,7 @@ import { scoopFlavors, toppings } from "../data/flavors";
         <button data-reset-cone class="text-xs font-bold text-candy-ink/60 hover:text-candy-ink underline flex items-center gap-1">
           <i class="ph-bold ph-arrow-counter-clockwise"></i> Reiniciar Cono
         </button>
-        <button data-order-cone class="px-6 py-3 rounded-xl bg-candy-blue text-white inline-flex items-center gap-2 font-display font-bold text-sm border-2 border-candy-ink shadow-pop hover:bg-candy-pink hover:text-candy-ink transition-all">
+        <button data-order-cone class="px-6 py-3 rounded-xl bg-candy-blue text-white inline-flex items-center gap-2 font-display font-bold text-sm border-2 border-candy-ink shadow-pop hover:bg-candy-pink hover:text-candy-ink pressable">
           ¡Pedir Este Cono! <i class="ph-bold ph-ice-cream text-base"></i>
         </button>
       </div>
@@ -94,7 +96,7 @@ import { scoopFlavors, toppings } from "../data/flavors";
           </div>
         </div>
 
-        <div id="emptyNotice" class="absolute inset-x-0 top-0 flex items-start justify-center p-6 pt-8 text-center text-xs font-bold text-candy-ink/50 pointer-events-none">
+        <div id="emptyNotice" class="absolute inset-x-0 top-0 flex items-start justify-center p-6 pt-8 text-center text-xs font-bold text-candy-ink/50 pointer-events-none transition-opacity duration-200">
           <span class="inline-flex items-center gap-1.5"><i class="ph-bold ph-hand-pointing text-sm"></i>Elegí tus sabores en los botones</span>
         </div>
 

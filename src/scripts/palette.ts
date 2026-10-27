@@ -9,12 +9,20 @@ async function copyHex(hex: string) {
   }
 }
 
+function toggleDrawer(drawer: HTMLElement | null) {
+  if (!drawer) return;
+  const open = drawer.dataset.open !== "true";
+  drawer.dataset.open = String(open);
+  drawer.inert = !open;
+  drawer.setAttribute("aria-hidden", String(!open));
+}
+
 export function initPalette() {
   const drawer = document.getElementById("paletteDrawer");
 
   document
     .querySelectorAll("[data-toggle-palette]")
-    .forEach((btn) => btn.addEventListener("click", () => drawer?.classList.toggle("hidden")));
+    .forEach((btn) => btn.addEventListener("click", () => toggleDrawer(drawer)));
 
   document.querySelectorAll<HTMLElement>("[data-copy-hex]").forEach((el) =>
     el.addEventListener("click", () => copyHex(el.dataset.copyHex!)),
