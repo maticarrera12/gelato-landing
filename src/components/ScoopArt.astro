@@ -1,0 +1,33 @@
+---
+interface Props {
+  color: string;
+  class?: string;
+}
+
+const { color, class: className } = Astro.props;
+---
+
+<!-- Flat illustration of the 3D scoop: same face, same ink outline -->
+<svg viewBox="0 0 100 130" class:list={["drop-shadow-sm", className]} aria-hidden="true">
+  <g class="stroke-candy-ink" stroke-width="3" stroke-linejoin="round">
+    <polygon points="30,74 70,74 50,126" class="fill-candy-mango"></polygon>
+    <g stroke-width="1.8" stroke-linecap="round">
+      <line x1="37" y1="84" x2="56" y2="108"></line>
+      <line x1="63" y1="84" x2="44" y2="108"></line>
+      <line x1="44" y1="76" x2="60" y2="96"></line>
+      <line x1="56" y1="76" x2="40" y2="96"></line>
+    </g>
+    {[26, 38, 50, 62, 74].map((x) => <circle cx={x} cy="68" r="8.5" fill={color} />)}
+    <circle cx="50" cy="44" r="30" fill={color}></circle>
+  </g>
+  <ellipse cx="38" cy="27" rx="8" ry="4.5" fill="#fff" opacity="0.55" transform="rotate(-30 38 27)"></ellipse>
+  <g class="fill-candy-ink">
+    <ellipse cx="40" cy="46" rx="3" ry="4"></ellipse>
+    <ellipse cx="60" cy="46" rx="3" ry="4"></ellipse>
+  </g>
+  <circle cx="41" cy="44.5" r="1.1" fill="#fff"></circle>
+  <circle cx="61" cy="44.5" r="1.1" fill="#fff"></circle>
+  <ellipse cx="31" cy="54" rx="4.5" ry="3" fill="#FF7FB6" opacity="0.6"></ellipse>
+  <ellipse cx="69" cy="54" rx="4.5" ry="3" fill="#FF7FB6" opacity="0.6"></ellipse>
+  <path d="M45 55 Q50 61 55 55" fill="none" class="stroke-candy-ink" stroke-width="2.4" stroke-linecap="round"></path>
+</svg>

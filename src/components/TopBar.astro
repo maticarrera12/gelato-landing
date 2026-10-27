@@ -1,0 +1,21 @@
+---
+import { palette } from "../data/palette";
+---
+
+<div class="bg-candy-mango border-b-2 border-candy-ink text-candy-ink py-2 px-4 text-xs font-bold uppercase tracking-wider flex justify-between items-center">
+  <div class="flex items-center gap-2">
+    <span class="inline-block w-2.5 h-2.5 rounded-full bg-candy-pink border border-candy-ink animate-pulse"></span>
+    <span>CANDY STUDIO LAB • GELATO ARTESANAL & DESSERT SHOP</span>
+  </div>
+  <div class="hidden md:flex items-center gap-4 font-mono font-bold">
+    <span class="text-candy-ink/80">HEX:</span>
+    {
+      palette.map((c) => (
+        <button data-copy-hex={c.hex} class="hover:underline flex items-center gap-1">
+          <span class={`w-3 h-3 rounded-full border border-candy-ink ${c.bg}`} />
+          {c.hex}
+        </button>
+      ))
+    }
+  </div>
+</div>

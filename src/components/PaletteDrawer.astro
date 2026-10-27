@@ -1,0 +1,27 @@
+---
+import { palette } from "../data/palette";
+---
+
+<aside id="paletteDrawer" class="hidden fixed bottom-6 right-6 z-50 bg-candy-cream p-5 rounded-3xl border-2 border-candy-ink shadow-pop-lg max-w-xs w-full">
+  <div class="flex justify-between items-center mb-3">
+    <div class="flex items-center gap-1.5">
+      <i class="ph-bold ph-palette text-base"></i>
+      <span class="font-display font-bold text-sm text-candy-ink">Candy Studio Palette</span>
+    </div>
+    <button data-toggle-palette class="w-6 h-6 rounded-lg bg-candy-ink text-white flex items-center justify-center font-bold text-xs hover:bg-candy-blue"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <p class="text-xs text-candy-ink/70 mb-3">Hacé clic sobre cualquier color para copiar el código HEX:</p>
+  <div class="space-y-2 text-xs font-mono font-bold">
+    {
+      palette.map((c) => (
+        <div
+          data-copy-hex={c.hex}
+          class={`p-2.5 rounded-xl border-2 border-candy-ink flex justify-between items-center cursor-pointer hover:scale-[1.02] transition-transform ${c.bg} ${c.text}`}
+        >
+          <span>{c.label}</span>
+          <span>{c.hex}</span>
+        </div>
+      ))
+    }
+  </div>
+</aside>

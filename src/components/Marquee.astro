@@ -1,0 +1,27 @@
+---
+const items = [
+  { icon: "ph-ice-cream", label: "GELATO ITALIANO" },
+  { icon: "ph-cherries", label: "FRUTAS FRESCAS" },
+  { icon: "ph-confetti", label: "TOPPINGS ILIMITADOS" },
+  { icon: "ph-sparkle", label: "PALETA CANDY STUDIO" },
+  { icon: "ph-rainbow", label: "100% ARTESANAL" },
+];
+// Duplicated so the -50% translate loops seamlessly
+const track = [...items, ...items];
+---
+
+<div class="bg-candy-pink border-y-2 border-candy-ink py-3 overflow-hidden">
+  <div class="flex w-[200%] animate-marquee hover:[animation-play-state:paused] whitespace-nowrap text-candy-ink font-display font-bold text-2xl uppercase tracking-tight items-center gap-10">
+    {
+      track.map((item) => (
+        <>
+          <span class="inline-flex items-center gap-2">
+            <i class={`ph-bold ${item.icon}`} />
+            {item.label}
+          </span>
+          <span>•</span>
+        </>
+      ))
+    }
+  </div>
+</div>

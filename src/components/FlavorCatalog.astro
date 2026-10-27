@@ -1,0 +1,62 @@
+---
+import { catalog, categories } from "../data/flavors";
+import ScoopArt from "./ScoopArt.astro";
+---
+
+<section id="sabores" class="py-20 bg-candy-cream border-y-2 border-candy-ink">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div>
+        <span class="text-candy-blue text-xs uppercase font-extrabold tracking-widest">// CARTA DE VERANO</span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl text-candy-ink mt-1">Nuestros Sabores Insignia</h2>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        {
+          categories.map((c, i) => (
+            <button
+              data-filter={c.id}
+              class={`px-4 py-2 rounded-xl font-bold text-xs uppercase border-2 border-candy-ink text-candy-ink transition-all ${
+                i === 0 ? "bg-candy-mango shadow-pop" : `bg-white ${c.hover}`
+              }`}
+            >
+              {c.label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        catalog.map((f) => (
+          <div
+            data-cat={f.cat}
+            class="flavor-card bg-white rounded-3xl border-2 border-candy-ink p-5 shadow-pop hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between"
+          >
+            <div>
+              <div class={`h-44 rounded-2xl border-2 border-candy-ink p-4 flex flex-col justify-between relative overflow-hidden mb-4 ${f.panel}`}>
+                <span class={`self-start text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase ${f.hexTag}`}>{f.hex}</span>
+                <div class="flex justify-center animate-float" style={`animation-delay: ${f.delay};`}>
+                  <ScoopArt color={f.hex} class="h-28" />
+                </div>
+                <span class={`text-xs font-bold px-2.5 py-0.5 rounded-md self-end ${f.badgeClass}`}>{f.badge}</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-candy-ink">{"title" in f ? f.title : f.name}</h3>
+              <p class="text-xs text-candy-ink/70 mt-1">{f.desc}</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-candy-ink/10 flex justify-between items-center">
+              <span class="text-xs font-bold text-candy-blue">Dulzura: {f.sweetness}/10</span>
+              <button
+                data-quick-add={f.name}
+                class="w-8 h-8 rounded-lg bg-candy-mint border border-candy-ink flex items-center justify-center font-bold text-sm hover:bg-candy-blue hover:text-white transition-colors"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

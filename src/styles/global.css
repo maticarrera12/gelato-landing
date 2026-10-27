@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import "@phosphor-icons/web/bold/style.css";
+
+@theme {
+  --color-candy-pink: #ffc7ea;
+  --color-candy-blue: #489cff;
+  --color-candy-mint: #c6ffca;
+  --color-candy-mango: #ffc655;
+  --color-candy-ink: #19153b;
+  --color-candy-cream: #fffdf7;
+  --color-candy-strawberry: #ff9ecf;
+  --color-candy-toffee: #e2a03f;
+  --color-candy-cherry: #ee4a25;
+
+  --font-display: "Fredoka", cursive;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+
+  --shadow-pop: 4px 4px 0 0 var(--color-candy-ink);
+  --shadow-pop-lg: 7px 7px 0 0 var(--color-candy-ink);
+  --shadow-pop-blue: 5px 5px 0 0 var(--color-candy-blue);
+  --shadow-pop-pink: 5px 5px 0 0 var(--color-candy-pink);
+  --shadow-pop-mango: 5px 5px 0 0 var(--color-candy-mango);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --animate-float: gentle-bounce 4s ease-in-out infinite;
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-scoop-drop: scoop-drop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+
+  @keyframes gentle-bounce {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(2deg);
+    }
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes scoop-drop {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px) scale(0.6);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-candy-cream);
+    color: var(--color-candy-ink);
+  }
+}
+
+@utility polka-bg {
+  background-image: radial-gradient(rgb(72 156 255 / 0.15) 2px, transparent 2px);
+  background-size: 24px 24px;
+}
