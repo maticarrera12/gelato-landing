@@ -1,5 +1,6 @@
 import confetti from "canvas-confetti";
 import { addToCart } from "./cart";
+import { conePricing } from "../data/shop";
 import { showToast } from "./toast";
 import type { ConeScene } from "./cone-scene";
 
@@ -92,7 +93,13 @@ function order() {
     return;
   }
   const count = scoops.length;
-  addToCart();
+  const active = toppingIds.filter((id) => toppings[id]);
+  const names = scoops.map((s) => s.name).join(" + ");
+  addToCart({
+    id: `cone:${names}|${active.join(",")}`,
+    name: `Cono: ${names}${active.length ? ` (+${active.length} topping${active.length > 1 ? "s" : ""})` : ""}`,
+    price: conePricing.base + conePricing.perScoop * count + conePricing.perTopping * active.length,
+  });
   view?.sendOff();
   confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
   showToast(`¡Cono de ${count} sabores agregado al pedido!`);

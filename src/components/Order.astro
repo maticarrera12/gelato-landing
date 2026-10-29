@@ -1,0 +1,92 @@
+---
+import { catalog } from "../data/flavors";
+import { formats, shop } from "../data/shop";
+const money = (n: number) => `$${n.toLocaleString("es-AR")}`;
+---
+
+<section id="pedir" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div class="text-center max-w-2xl mx-auto">
+    <span class="text-xs font-extrabold uppercase tracking-widest text-candy-blue">Pedí tu helado</span>
+    <h2 data-reveal="words" class="font-display font-bold text-4xl sm:text-5xl text-candy-ink mt-1">Elegí el formato, nosotros lo llevamos</h2>
+    <p class="text-sm text-candy-ink/70 mt-3">Armá tu pedido por WhatsApp o pedilo en tu app favorita. Delivery refrigerado en menos de 35 minutos.</p>
+  </div>
+
+  <div id="formatPicker" role="radiogroup" aria-label="Formato de helado" class="mt-10 grid grid-cols-2 md:grid-cols-5 gap-4">
+    {
+      formats.map((f, i) => (
+        <button
+          type="button"
+          role="radio"
+          aria-checked={i === 0 ? "true" : "false"}
+          data-format={f.id}
+          data-label={f.label}
+          data-max={f.max}
+          data-price={f.price}
+          data-reveal="up"
+          class="text-left bg-white border-2 border-candy-ink rounded-2xl p-4 shadow-pop pressable aria-checked:bg-candy-mango aria-checked:shadow-none aria-checked:translate-x-1 aria-checked:translate-y-1"
+        >
+          <i class={`ph-bold ${f.icon} text-2xl`} />
+          <div class="font-display font-bold text-lg mt-2">{f.label}</div>
+          <div class="text-xs text-candy-ink/70">Hasta {f.max} sabores</div>
+          <div class="font-mono font-bold text-sm mt-2">{money(f.price)}</div>
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="mt-10 max-w-3xl mx-auto">
+    <div class="flex items-baseline justify-between mb-3">
+      <h3 class="font-display font-bold text-xl">Elegí tus sabores</h3>
+      <span id="flavorCounter" class="font-mono font-bold text-sm bg-candy-cream border-2 border-candy-ink px-3 py-0.5 rounded-full">0/2</span>
+    </div>
+    <div id="flavorPicker" class="flex flex-wrap gap-2">
+      {
+        catalog.map((f) => (
+          <button
+            type="button"
+            aria-pressed="false"
+            data-flavor={f.name}
+            class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border-2 border-candy-ink text-xs font-bold pressable aria-pressed:bg-candy-mango aria-pressed:shadow-pop"
+          >
+            <span class="w-3 h-3 rounded-full border border-candy-ink" style={`background-color: ${f.hex}`}></span>
+            {f.name}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+    <button
+      id="orderAdd"
+      type="button"
+      class="flex items-center gap-2 px-6 py-3 rounded-xl bg-candy-blue text-white font-display font-bold border-2 border-candy-ink shadow-pop hover:-translate-y-0.5 pressable"
+    >
+      <i class="ph-bold ph-shopping-bag text-xl"></i>
+      <span>Agregar al pedido</span>
+    </button>
+    <a
+      id="orderWhatsapp"
+      href={`https://wa.me/${shop.whatsapp}`}
+      target="_blank"
+      rel="noopener"
+      class="flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-candy-ink font-display font-bold border-2 border-candy-ink shadow-pop hover:-translate-y-0.5 pressable"
+    >
+      <i class="ph-bold ph-whatsapp-logo text-xl"></i>
+      <span>Pedir por WhatsApp</span>
+    </a>
+    {
+      shop.deliveryApps.map((app) => (
+        <a
+          href={app.href}
+          target="_blank"
+          rel="noopener"
+          class="px-6 py-3 rounded-xl bg-white text-candy-ink font-display font-bold border-2 border-candy-ink shadow-pop hover:-translate-y-0.5 pressable"
+        >
+          {app.label}
+        </a>
+      ))
+    }
+  </div>
+  <p class="text-center text-[11px] text-candy-ink/60 mt-4">Retiro en local sin cargo · Delivery en Palermo, Villa Crespo, Colegiales y Recoleta.</p>
+</section>

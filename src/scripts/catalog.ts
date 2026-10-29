@@ -45,7 +45,7 @@ export function initCatalog() {
 
   document.querySelectorAll<HTMLElement>("[data-quick-add]").forEach((btn) =>
     btn.addEventListener("click", () => {
-      addToCart();
+      addToCart({ id: `flavor:${btn.dataset.quickAdd}`, name: btn.dataset.quickAdd!, price: Number(btn.dataset.price) });
       showToast(`Agregaste 1x ${btn.dataset.quickAdd} al carrito`);
     }),
   );

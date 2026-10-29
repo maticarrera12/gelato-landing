@@ -51,6 +51,8 @@ import ScoopArt from "./ScoopArt.astro";
               <span class="text-xs font-bold text-candy-blue">Dulzura: {f.sweetness}/10</span>
               <button
                 data-quick-add={f.name}
+                data-price={f.price}
+                aria-label={`Agregar ${f.name} al carrito`}
                 class="w-8 h-8 rounded-lg bg-candy-mint border border-candy-ink flex items-center justify-center font-bold text-sm hover:bg-candy-blue hover:text-white pressable"
               >
                 +

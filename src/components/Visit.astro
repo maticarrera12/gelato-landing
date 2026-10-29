@@ -1,0 +1,43 @@
+---
+import { hours, shop } from "../data/shop";
+---
+
+<section id="visitanos" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div class="text-center max-w-2xl mx-auto">
+    <span class="text-xs font-extrabold uppercase tracking-widest text-candy-blue">Visitanos</span>
+    <h2 data-reveal="words" class="font-display font-bold text-4xl sm:text-5xl text-candy-ink mt-1">Palermo Soho Lab</h2>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div data-reveal="left" class="bg-candy-mint/40 border-2 border-candy-ink rounded-3xl p-6 shadow-pop space-y-6">
+      <div>
+        <h3 class="font-display font-bold text-lg flex items-center gap-2"><i class="ph-bold ph-map-pin"></i> Dirección</h3>
+        <p class="text-sm text-candy-ink/80 mt-1">{shop.address}</p>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-lg flex items-center gap-2"><i class="ph-bold ph-clock"></i> Horarios</h3>
+        <dl class="mt-2 text-sm space-y-1">
+          {
+            hours.map((h) => (
+              <div class="flex justify-between gap-4 border-b border-candy-ink/15 pb-1">
+                <dt>{h.days}</dt>
+                <dd class="font-mono font-bold">{h.time}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-lg flex items-center gap-2"><i class="ph-bold ph-chat-circle-dots"></i> Contacto</h3>
+        <ul class="mt-1 text-sm space-y-1">
+          <li><a class="font-bold hover:text-candy-blue" href={`https://wa.me/${shop.whatsapp}`} target="_blank" rel="noopener">WhatsApp {shop.whatsappLabel}</a></li>
+          <li><a class="font-bold hover:text-candy-blue" href={`https://instagram.com/${shop.instagram}`} target="_blank" rel="noopener">@{shop.instagram}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div data-reveal="right" class="border-2 border-candy-ink rounded-3xl overflow-hidden shadow-pop min-h-80">
+      <iframe title="Mapa de MIMI & CO. en Palermo Soho" src={shop.mapEmbed} loading="lazy" class="w-full h-full min-h-80"></iframe>
+    </div>
+  </div>
+</section>

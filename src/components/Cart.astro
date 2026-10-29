@@ -1,0 +1,42 @@
+<div id="cartBackdrop" data-open="false" class="fixed inset-0 z-[55] bg-candy-ink/40 opacity-0 pointer-events-none transition-opacity duration-200 data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto"></div>
+
+<aside
+  id="cartDrawer"
+  data-open="false"
+  aria-hidden="true"
+  aria-label="Tu pedido"
+  inert
+  class="fixed top-0 right-0 bottom-0 z-[60] w-full max-w-md bg-candy-cream border-l-2 border-candy-ink shadow-pop-lg flex flex-col invisible translate-x-full transition-[translate,visibility] duration-200 data-[open=true]:visible data-[open=true]:translate-x-0"
+>
+  <div class="flex items-center justify-between px-5 h-20 border-b-2 border-candy-ink shrink-0">
+    <h2 class="font-display font-bold text-2xl flex items-center gap-2"><i class="ph-bold ph-shopping-bag"></i> Tu pedido</h2>
+    <button id="cartClose" type="button" aria-label="Cerrar carrito" class="w-9 h-9 rounded-xl bg-white border-2 border-candy-ink flex items-center justify-center pressable hover:bg-candy-pink">
+      <i class="ph-bold ph-x"></i>
+    </button>
+  </div>
+
+  <div id="cartEmpty" class="flex-1 flex flex-col items-center justify-center text-center px-8 gap-3">
+    <i class="ph-bold ph-ice-cream text-5xl text-candy-ink/30"></i>
+    <p class="font-display font-bold text-lg">Todavía no hay nada acá</p>
+    <p class="text-xs text-candy-ink/70">Sumá sabores, armá tu cono o elegí un formato.</p>
+  </div>
+
+  <ul id="cartList" class="flex-1 overflow-y-auto px-5 py-4 space-y-3 hidden"></ul>
+
+  <div id="cartDone" class="flex-1 hidden flex-col items-center justify-center text-center px-8 gap-3">
+    <div class="w-16 h-16 rounded-2xl bg-candy-mint border-2 border-candy-ink shadow-pop flex items-center justify-center text-3xl"><i class="ph-bold ph-check"></i></div>
+    <p class="font-display font-bold text-2xl">¡Pedido confirmado!</p>
+    <p class="text-sm">Orden <span id="cartOrderId" class="font-mono font-bold"></span></p>
+    <p class="text-xs text-candy-ink/70">Llega en unos 35 minutos. (Es una demo: no se cobró ni se envió nada.)</p>
+    <button id="cartDoneClose" type="button" class="mt-2 px-5 py-2.5 rounded-xl bg-candy-blue text-white font-display font-bold border-2 border-candy-ink shadow-pop pressable">Seguir mirando</button>
+  </div>
+
+  <div id="cartFooter" class="hidden border-t-2 border-candy-ink px-5 py-4 space-y-3 shrink-0 bg-white">
+    <div class="flex justify-between items-baseline">
+      <span class="font-bold text-sm">Total</span>
+      <span id="cartTotal" class="font-mono font-bold text-xl"></span>
+    </div>
+    <button id="cartCheckout" type="button" class="w-full px-6 py-3 rounded-xl bg-candy-blue text-white font-display font-bold border-2 border-candy-ink shadow-pop hover:-translate-y-0.5 pressable">Pedir</button>
+    <button id="cartClear" type="button" class="w-full text-xs font-bold text-candy-ink/60 hover:text-candy-cherry">Vaciar carrito</button>
+  </div>
+</aside>
