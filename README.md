@@ -28,6 +28,11 @@ Requires Node 22.23.4+ (an Astro 7 requirement) and pnpm. The 3D parts need WebG
 | **Scroll story** | The section pins for ~4 screens and the scene is a pure function of scroll progress, so it also plays in reverse. |
 | **Cone builder** | Stack up to 3 scoops and toppings in 3D with spring physics. "Order" sends the cone flying and a fresh one pops in. |
 | **Catalog + mood matcher** | Filterable cards with staggered re-entry; mood result crossfades with a blur bridge. |
+| **Order** | Pick a size (cone, cup, 1/4, 1/2, 1 kg), then up to as many flavors as that size allows. Add it to the cart or send it over WhatsApp, which gets a prefilled message. |
+| **Cart** | Header drawer shared by the catalog, the cone builder and the order section: quantities, remove, clear, total, and a fake checkout that returns an order number. Persisted in `localStorage`. |
+| **Events** | Catering form that opens WhatsApp with the request already written. No backend. |
+| **Reviews + Visit** | Social proof, opening hours, contact and an OpenStreetMap embed. |
+| **Mobile menu** | Hamburger panel below `lg`, closes on link, Esc or breakpoint change. |
 | **Palette drawer** | Click any swatch to copy its HEX. Scales in from its corner, stays `inert` when closed. |
 
 ### Scroll story — from ingredients to a scoop
@@ -92,7 +97,7 @@ The scene is scrubbed by scroll, not triggered by events: ingredients dive into 
 ```
 src/
 ├── components/   One .astro file per section (Hero, Story, ConeBuilder, FlavorCatalog…)
-├── data/         Flavors, toppings, moods, palette, story steps
+├── data/         Flavors, toppings, moods, palette, story steps, shop info (shop.ts), reviews
 ├── layouts/      Document shell + fonts
 ├── pages/        index.astro
 ├── scripts/
@@ -101,7 +106,9 @@ src/
 │   ├── process-scene.ts   Scroll-scrubbed tub scene
 │   ├── story.ts           Scroll progress → scene + UI
 │   ├── reveal.ts          Declarative scroll reveals
-│   └── …                  Cart, catalog, palette, toast, motion helpers
+│   ├── cart.ts            Cart store, drawer rendering, localStorage persistence
+│   ├── order.ts           Size and flavor picker, events form
+│   └── …                  Catalog, nav, palette, toast, motion helpers
 └── styles/       Tailwind theme + utilities
 docs/screenshots/ README images
 ```
@@ -110,4 +117,6 @@ docs/screenshots/ README images
 
 - Verified in headless Chromium with software WebGL, so frame rate on a real GPU and on real phones hasn't been profiled.
 - There are no automated tests; verification is scripted browser checks run by hand.
-- Copy, prices and locations are placeholder content.
+- Copy, prices, reviews, phone number, Instagram handle and map coordinates are placeholder content (see `src/data/shop.ts` and `src/data/reviews.ts`).
+- The checkout is fake: nothing is charged or sent, and the WhatsApp number is a dummy.
+- The new sections (order, cart, events, reviews, visit, mobile menu) are not in the screenshots above yet.
