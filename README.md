@@ -48,6 +48,14 @@ The scene is scrubbed by scroll, not triggered by events: ingredients dive into 
 
 ![Cone builder with three scoops and toppings](docs/screenshots/builder.jpg)
 
+### Order and cart
+
+Pick a size, choose the flavors it allows, and add it to the cart. The same drawer collects catalog flavors and builder cones.
+
+![Order section with size and flavor picker](docs/screenshots/order.jpg)
+![Cart drawer with quantities and total](docs/screenshots/cart.jpg)
+![Fake checkout confirmation](docs/screenshots/checkout.jpg)
+
 ### Catalog and mood matcher
 
 ![Flavor catalog](docs/screenshots/catalog.jpg)
@@ -119,4 +127,4 @@ docs/screenshots/ README images
 - There are no automated tests; verification is scripted browser checks run by hand.
 - Copy, prices, reviews, phone number, Instagram handle and map coordinates are placeholder content (see `src/data/shop.ts` and `src/data/reviews.ts`).
 - The checkout is fake: nothing is charged or sent, and the WhatsApp number is a dummy.
-- The new sections (order, cart, events, reviews, visit, mobile menu) are not in the screenshots above yet.
+- Events, reviews, visit and the mobile menu are not in the screenshots yet.
